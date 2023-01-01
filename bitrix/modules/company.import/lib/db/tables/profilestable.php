@@ -1,5 +1,5 @@
 <?php
-namespace Company\Import\Tables;
+namespace Company\Import\DB\Tables;
 
 use Bitrix\Main;
 
