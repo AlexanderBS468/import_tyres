@@ -116,7 +116,7 @@ class company_import extends CModule
 
 	public function InstallDB()
 	{
-
+		Company\Import\DB\Controller::createTables();
 	}
 
 	public function InstallEvents()
@@ -156,7 +156,7 @@ class company_import extends CModule
 
 	public function UnInstallDB()
 	{
-
+		Company\Import\DB\Controller::dropTables();
 	}
 
 	public function UnInstallEvents()
