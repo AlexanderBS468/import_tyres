@@ -16,7 +16,7 @@ return [
 			'title' => Loc::getMessage('IMPORT_MENU_PROFILES'),
 			'url' => 'company_import_profiles.php?lang=' . LANGUAGE_ID,
 			'more_url' => [
-				'import_profile_edit.php',
+				'company_import_profile_edit.php',
 			]
 		]
 	],
