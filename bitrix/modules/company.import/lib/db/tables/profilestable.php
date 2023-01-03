@@ -44,20 +44,25 @@ class ProfilesTable extends Main\ORM\Data\DataManager
 					'ZPT',
 					'TAB',
 					'SPS',
-					'CTM',
 				],
 			]),
-			new Main\ORM\Fields\StringField('IBLOCK', [
+			new Main\ORM\Fields\StringField('IBLOCK_ID', [
 				'required' => true,
 			]),
-			(new Main\ORM\Fields\ArrayField('META', [
+			new Main\ORM\Fields\EnumField('MISSING_ITEMS', [
 				'required' => true,
-			]))
-				->configureSerializationJson(),
-			(new Main\ORM\Fields\ArrayField('PROPERTY', [
+				'values' => [
+					'nothing',
+					'deactivate',
+					'delete'
+				],
+			]),
+			new Main\ORM\Fields\TextField('META', [
 				'required' => true,
-			]))
-				->configureSerializationJson(),
+			]),
+			new Main\ORM\Fields\TextField('PROPERTY', [
+				'required' => true,
+			])
 		];
 	}
 
