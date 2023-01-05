@@ -1,8 +1,8 @@
 <?php
 
-$MESS['IMPORT_MENU_CONTROL'] = 'Ñâîé èìïîðò ñ SelecTyre';
-$MESS['IMPORT_MENU_TITLE'] = 'Ñâîé èìïîðò ñ SelecTyre';
-$MESS['IMPORT_MENU_PROFILES'] = 'Ïðîôèëÿ èìïîðòà';
+$MESS['IMPORT_MENU_CONTROL'] = 'Ð¡Ð²Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ñ SelecTyre';
+$MESS['IMPORT_MENU_TITLE'] = 'Ð¡Ð²Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ñ SelecTyre';
+$MESS['IMPORT_MENU_PROFILES'] = 'ÐŸÑ€Ð¾Ñ„Ð¸Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð°';
 
 
 

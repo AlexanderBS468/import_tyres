@@ -1,8 +1,8 @@
 <?php
-$MESS['T_CUSTOM_MODULE_NAME'] = 'Èìïîðò ñ SelecTyre';
-$MESS['T_CUSTOM_MODULE_DESCRIPTION'] = 'Ìîäóëü èìïîðòà øèí';
+$MESS['T_CUSTOM_MODULE_NAME'] = 'Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚ Ñ SelecTyre';
+$MESS['T_CUSTOM_MODULE_DESCRIPTION'] = 'ÐœÐ¾Ð´ÑƒÐ»ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð° ÑˆÐ¸Ð½';
 $MESS['T_CUSTOM_PARTNER_NAME'] = 'Aleksandr';
 $MESS['T_CUSTOM_PARTNER_URI'] = 'https://wheelshops.ru/';
-$MESS['T_CUSTOM_INSTALL_REQUIRE_MODULE'] = 'Äëÿ óñòàíîâêè íåîáõîäèì ìîäóëü #MODULE# âåðñèè íå íèæå #VERSION#';
-$MESS['T_CUSTOM_INSTALL_REQUIRE_PHP'] = 'Òðåáóåòñÿ âåðñèÿ PHP íå íèæå #VERSION#';
-$MESS['T_CUSTOM_MODULE_NOT_REGISTERED'] = 'Íå óäàëîñü çàðåãèñòðèðîâàòü ìîäóëü';
+$MESS['T_CUSTOM_INSTALL_REQUIRE_MODULE'] = 'Ð”Ð»Ñ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ¸ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ #MODULE# Ð²ÐµÑ€ÑÐ¸Ð¸ Ð½Ðµ Ð½Ð¸Ð¶Ðµ #VERSION#';
+$MESS['T_CUSTOM_INSTALL_REQUIRE_PHP'] = 'Ð¢Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð²ÐµÑ€ÑÐ¸Ñ PHP Ð½Ðµ Ð½Ð¸Ð¶Ðµ #VERSION#';
+$MESS['T_CUSTOM_MODULE_NOT_REGISTERED'] = 'ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ';
