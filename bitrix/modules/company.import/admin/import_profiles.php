@@ -4,7 +4,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_admin.p
 use Bitrix\Main,
 	Bitrix\Main\Localization\Loc,
 	Bitrix\Main\Loader;
-use Company\Import\Admin\Page\PageProfiles;
+use Company\Import\Admin\Page\Profiles;
 
 Loc::loadMessages(__FILE__);
 
@@ -18,7 +18,7 @@ try
 	global $APPLICATION;
 	$APPLICATION->SetTitle( Loc::getMessage('COMPANY_IMPORT_TITLE') );
 
-	$classPage = new PageProfiles();
+	$classPage = new Profiles();
 	$classPage->render();
 }
 catch (Main\SystemException $exception)
