@@ -12,7 +12,7 @@ use Company\Import\DB\Tables\ProfilesTable;
  * @deprecated
  */
 
-class PageProfiles
+class Profiles
 {
 	/** @var $oSort \CAdminSorting */
 	public $oSort;
