@@ -25,6 +25,9 @@ $MESS['COMPANY_IMPORT_ERROR_DOWNLOAD'] = 'Ошибка загрузки файл
 $MESS['COMPANY_IMPORT_FILE_NOT_FOUND'] = 'Не указан файл импорта';
 $MESS['COMPANY_IMPORT_ERROR_FILE_UNAVAILABLE'] = 'Файл импорта не доступен';
 
+$MESS['COMPANY_IMPORT_GROUP_SETTINGS_PROPS'] = 'Настройки свойств и полей';
+$MESS['COMPANY_IMPORT_GROUP_SETTINGS_SECTIONS'] = 'Настройки категорий';
+
 /** fields */
 $MESS['COMPANY_IMPORT_FIELD_NAME'] = 'Название';
 $MESS['COMPANY_IMPORT_FIELD_XML_ID'] = 'XML_ID';
@@ -42,6 +45,9 @@ $MESS['COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_PROPERTIES'] = 'Свойства �
 $MESS['COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_PROPERTY_CREATE_NEW'] = 'Создать новое свойство';
 $MESS['COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_SECTION_FIELDS'] = 'Поля раздела';
 $MESS['COMPANY_IMPORT_FIELD_PROPS_SALE_PARAM'] = 'Параметры интернет-магазина';
+$MESS['COMPANY_IMPORT_FIELD_TYPE_OF_DATA'] = 'Тип данный запроса';
+$MESS['COMPANY_IMPORT_FIELD_TYPE_OF_RESPONSE'] = 'Тип ответа';
+$MESS['COMPANY_IMPORT_FIELD_CATALOG_CATEGORY'] = 'Категории';
 
 /** fields values */
 $MESS['COMPANY_IMPORT_FIELD_ENCODING_CYRILLIC1251'] = 'Windows-1251';
@@ -65,3 +71,4 @@ $MESS['COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_SECTION_FIELDS_VALUE_SECTION_DETAI
 $MESS['COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_SECTION_FIELDS_VALUE_SECTION_DESCRIPTION'] = 'Описание';
 $MESS['COMPANY_IMPORT_FIELD_PROPS_SALE_PARAM_VALUE_QUANTITY'] = 'Количество';
 $MESS['COMPANY_IMPORT_FIELD_PROPS_SALE_PARAM_VALUE_STORE_NAME'] = 'Склад';
+$MESS['COMPANY_IMPORT_FIELD_VALUE_TYPE_OF_DATA_CATALOG'] = 'Ассортименты товаров';

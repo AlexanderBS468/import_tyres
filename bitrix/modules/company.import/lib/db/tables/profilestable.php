@@ -37,6 +37,12 @@ class ProfilesTable extends Main\ORM\Data\DataManager
 					'UTF-8'
 				],
 			]),
+			new Main\ORM\Fields\EnumField('TYPE_OF_RESPONSE', [
+				'required' => true,
+				'values' => [
+					'CSV',
+				],
+			]),
 			new Main\ORM\Fields\EnumField('SEPARATOR', [
 				'required' => true,
 				'values' => [
@@ -44,6 +50,12 @@ class ProfilesTable extends Main\ORM\Data\DataManager
 					'ZPT',
 					'TAB',
 					'SPS',
+				],
+			]),
+			new Main\ORM\Fields\EnumField('TYPE_OF_DATA', [
+				'required' => true,
+				'values' => [
+					'CATALOG',
 				],
 			]),
 			new Main\ORM\Fields\StringField('IBLOCK_ID', [

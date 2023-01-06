@@ -165,6 +165,17 @@ class ProfileEdit
 
 		$this->tabControl->AddSection( 'DATA_SETTINGS', Loc::getMessage( 'COMPANY_IMPORT_SECTION_BLOCK_TITLE' ) );
 		$this->tabControl->BeginCustomField( 'URL', Loc::getMessage( 'COMPANY_IMPORT_LINK' ) );
+
+		$this->tabControl->AddDropDownField(
+			'TYPE_OF_RESPONSE',
+			Loc::getMessage( 'COMPANY_IMPORT_FIELD_TYPE_OF_RESPONSE' ),
+			false,
+			[
+				'CSV' => 'CSV',
+			],
+			array_key_exists( 'TYPE_OF_RESPONSE', $_REQUEST ) ? $_REQUEST["TYPE_OF_RESPONSE"] : $arImport["TYPE_OF_RESPONSE"]
+		);
+
 		?>
 		<tr>
 			<td><b><?=$this->tabControl->GetCustomLabelHTML()?></b></td>
@@ -215,6 +226,16 @@ class ProfileEdit
 		);
 
 		$this->tabControl->AddDropDownField( 'SEPARATOR', Loc::getMessage( 'COMPANY_IMPORT_FIELD_SEPARATOR' ), false, $arSeparators, array_key_exists( 'SEPARATOR', $_REQUEST ) ? $_REQUEST["SEPARATOR"] : $arImport["SEPARATOR"] );
+
+		$this->tabControl->AddDropDownField(
+			'TYPE_OF_DATA',
+			Loc::getMessage( 'COMPANY_IMPORT_FIELD_TYPE_OF_DATA' ),
+			false,
+			[
+				'CATALOG' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_TYPE_OF_DATA_CATALOG' ),
+			],
+			array_key_exists( 'TYPE_OF_DATA', $_REQUEST ) ? $_REQUEST["TYPE_OF_DATA"] : $arImport["TYPE_OF_DATA"]
+		);
 
 		$arIBTypes = [];
 		$dbRes = \CIBlockType::GetList();
@@ -388,6 +409,37 @@ class ProfileEdit
 			<th class="adm-detail-content-cell-r" style="text-align: left;"><?=Loc::getMessage('COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_VALUE')?></th>
 		</tr>
 		<?php
+		if ($arImport['TYPE_OF_DATA'] === 'CATALOG')
+		{
+			$isSelected = $arFields['SECTIONS'] ? 'selected="selected"' : '';
+			?>
+			<tr class="heading">
+				<td colspan="2"><?=Loc::getMessage('COMPANY_IMPORT_GROUP_SETTINGS_SECTIONS')?></td>
+			</tr>
+
+			<tr>
+				<td width="40%" class="adm-detail-content-cell-l"><?=Loc::getMessage('COMPANY_IMPORT_FIELD_CATALOG_CATEGORY')?></td>
+				<td class="adm-detail-content-cell-r">
+					<select name="FIELD_SECTIONS">
+						<option value="" <?=$isSelected?>><?=Loc::getMessage("COMPANY_IMPORT_FIELD_VALUE_IBLOCK_PROP_VALUE_NULL")?></option>
+						<?php
+						foreach( $arMeta as $meta_name )
+						{
+							$isSelectedOption = $arFields['SECTIONS'] === $meta_name ? 'selected="selected"' : '';
+							?><option value="<?=$meta_name?>" <?=$isSelectedOption?>><?=$meta_name?></option><?php
+						}
+						?>
+					</select>
+				</td>
+			</tr>
+			<?php
+		}
+
+		?>
+		<tr class="heading">
+			<td colspan="2"><?=Loc::getMessage('COMPANY_IMPORT_GROUP_SETTINGS_PROPS')?></td>
+		</tr>
+		<?php
 		foreach( $arMeta as $code => $meta_name )
 		{
 			?>
@@ -510,23 +562,17 @@ class ProfileEdit
 			$newCells = [];
 			$cells = str_getcsv($row, $separator);
 
-			foreach ($cells as $index => $indexValue)
+			foreach ($cells as $index => $cell)
 			{
-				if( preg_match( '/^[0-9A-Za-z]+$/', $cells[$index] ) === 0 )
-				{
-					$cell = $indexValue;
-
-					if ($arImport['ENCODING'] !== SITE_CHARSET) {
-						$cell = iconv($arImport['ENCODING'], SITE_CHARSET.'//TRANSLIT', $cell);
-					}
-
-					$code = strtoupper(\CUtil::translit($cell, "ru", $arParamsMeta));
-					$code = preg_replace(['/ \[.*\]/', '/"/'], ['', ''], $code);
-
-					$newCells[$code] = $cell;
+				if ($arImport['ENCODING'] !== SITE_CHARSET) {
+					$cell = iconv($arImport['ENCODING'], SITE_CHARSET.'//TRANSLIT', $cell);
 				}
-			}
 
+				$code = strtoupper(\CUtil::translit($cell, "ru", $arParamsMeta));
+				$code = preg_replace(['/ \[.*\]/', '/"/'], ['', ''], $code);
+
+				$newCells[$code] = $cell;
+			}
 			$arFields = json_decode($arImport["PROPERTY"], true) ?: [];
 
 			$this->propsFields($newCells, $arFields, $arImport);
@@ -664,8 +710,10 @@ class ProfileEdit
 			"ACTIVE" => ($queryList['ACTIVE'] === "Y"),
 			"SORT" => $queryList['SORT'] ?: 100,
 			"URL" => htmlspecialchars( $URL ),
+			"TYPE_OF_RESPONSE" => $queryList['TYPE_OF_RESPONSE'] ?: 'CSV',
 			"ENCODING" => $queryList['ENCODING'] ?: 'windows-1251',
 			"SEPARATOR" => $queryList['SEPARATOR'] ?: 'TZP',
+			"TYPE_OF_DATA" => $queryList['TYPE_OF_DATA'] ?: 'CATALOG',
 			"IBLOCK_ID" => $IBLOCK_ID,
 			'META' => json_encode($arMeta),
 			"PROPERTY" => json_encode($arProperty),
