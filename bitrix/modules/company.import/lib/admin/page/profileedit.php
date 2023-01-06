@@ -6,6 +6,7 @@ use Bitrix\Main;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Company\Import\DB\Tables\ProfilesTable;
+use Company\Import\Glossary;
 
 /**
  * @description temp fast version code
@@ -218,12 +219,11 @@ class ProfileEdit
 
 		$this->tabControl->AddDropDownField( 'ENCODING', Loc::getMessage( 'COMPANY_IMPORT_FIELD_ENCODING' ), false, $arEncodings, array_key_exists( 'ENCODING', $_REQUEST ) ? $_REQUEST["ENCODING"] : $arImport["ENCODING"] );
 
-		$arSeparators = array(
-			'TZP' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_SEPARATOR_TZP' ),
-			'ZPT' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_SEPARATOR_ZPT' ),
-			'TAB' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_SEPARATOR_TAB' ),
-			'SPS' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_SEPARATOR_SPS' ),
-		);
+		$arSeparators = [];
+		$separatorValues = Glossary::getSeparatorValues();
+		array_walk($separatorValues, static function ($value) use (&$arSeparators) {
+			$arSeparators[$value] = Loc::getMessage('COMPANY_IMPORT_FIELD_VALUE_SEPARATOR_' . $value);
+		});
 
 		$this->tabControl->AddDropDownField( 'SEPARATOR', Loc::getMessage( 'COMPANY_IMPORT_FIELD_SEPARATOR' ), false, $arSeparators, array_key_exists( 'SEPARATOR', $_REQUEST ) ? $_REQUEST["SEPARATOR"] : $arImport["SEPARATOR"] );
 
@@ -232,7 +232,7 @@ class ProfileEdit
 			Loc::getMessage( 'COMPANY_IMPORT_FIELD_TYPE_OF_DATA' ),
 			false,
 			[
-				'CATALOG' => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_TYPE_OF_DATA_CATALOG' ),
+				Glossary::TYPE_OF_DATA_CATALOG => Loc::getMessage( 'COMPANY_IMPORT_FIELD_VALUE_TYPE_OF_DATA_CATALOG' ),
 			],
 			array_key_exists( 'TYPE_OF_DATA', $_REQUEST ) ? $_REQUEST["TYPE_OF_DATA"] : $arImport["TYPE_OF_DATA"]
 		);
@@ -396,7 +396,6 @@ class ProfileEdit
 		</tr>
 		<?php
 
-
 		$arProperties = [];
 		$rsProperty = \CIBlockProperty::GetList( ["NAME" => "ASC"], ["IBLOCK_ID" => $arImport["IBLOCK_ID"]]);
 		while( $arProperty = $rsProperty->fetch() )
@@ -409,7 +408,7 @@ class ProfileEdit
 			<th class="adm-detail-content-cell-r" style="text-align: left;"><?=Loc::getMessage('COMPANY_IMPORT_FIELD_PROPS_IBLOCK_PROP_VALUE')?></th>
 		</tr>
 		<?php
-		if ($arImport['TYPE_OF_DATA'] === 'CATALOG')
+		if ($arImport['TYPE_OF_DATA'] === Glossary::TYPE_OF_DATA_CATALOG)
 		{
 			$isSelected = $arFields['SECTIONS'] ? 'selected="selected"' : '';
 			?>

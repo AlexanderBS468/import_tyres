@@ -2,6 +2,7 @@
 namespace Company\Import\DB\Tables;
 
 use Bitrix\Main;
+use Company\Import\Glossary;
 
 class ProfilesTable extends Main\ORM\Data\DataManager
 {
@@ -45,17 +46,12 @@ class ProfilesTable extends Main\ORM\Data\DataManager
 			]),
 			new Main\ORM\Fields\EnumField('SEPARATOR', [
 				'required' => true,
-				'values' => [
-					'TZP',
-					'ZPT',
-					'TAB',
-					'SPS',
-				],
+				'values' => Glossary::getSeparatorValues(),
 			]),
 			new Main\ORM\Fields\EnumField('TYPE_OF_DATA', [
 				'required' => true,
 				'values' => [
-					'CATALOG',
+					Glossary::TYPE_OF_DATA_CATALOG,
 				],
 			]),
 			new Main\ORM\Fields\StringField('IBLOCK_ID', [
